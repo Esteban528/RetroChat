@@ -12,6 +12,7 @@ import javax.swing.plaf.basic.BasicBorders;
 
 
 import app.User;
+import run.Start;
 
 public class AppFrame extends JFrame implements WindowListener  {
 	private boolean notification;
@@ -32,7 +33,7 @@ public class AppFrame extends JFrame implements WindowListener  {
 
 		setBounds(width/4, height/4, width/2, height/2);
 		
-		ImageIcon icon = new ImageIcon ("files/retroChat.png");
+		ImageIcon icon = new ImageIcon (Start.ROUTE_DEFAULT_FILES_FOLDER+"/retroChat.png");
 		setIconImage(icon.getImage());
 		
 

@@ -19,6 +19,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 
 import app.User;
+import run.Start;
 
 public class LoginFrame extends JFrame  {
 	
@@ -34,7 +35,7 @@ public class LoginFrame extends JFrame  {
 
 		setBounds(width/4, height/4, width/2, height/2);
 		
-		ImageIcon icon = new ImageIcon ("files/retroChat.png");
+		ImageIcon icon = new ImageIcon (Start.ROUTE_DEFAULT_FILES_FOLDER+"/retroChat.png");
 		setIconImage(icon.getImage());
 		
 

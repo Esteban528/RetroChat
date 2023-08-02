@@ -9,10 +9,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import run.Start;
+
 public class ContactsData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	final String ROUTE_OF_CONTACTSLIST = "files/contact.dat";
+	final String ROUTE_OF_CONTACTSLIST = Start.ROUTE_PERSONAL_DATA+"/contact.dat";
 	private ArrayList<User> contactsArray;
 	
 	public ContactsData () {
