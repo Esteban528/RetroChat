@@ -15,7 +15,7 @@ public class Start {
 	public static String ROUTE_PERSONAL_DATA;
 	public static final String CONFIG_DIR = "serverData";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		if (s.equals("\\")) { 
 			ROUTE_PERSONAL_DATA = "C:\\RetroChat";
 			
@@ -36,10 +36,9 @@ public class Start {
 		guiPanelLogin.open();
 		
 		AppFrame guiPanel = new AppFrame(updateContactsList.getContactsFile());
-		//guiPanel.open();
+		guiPanel.open();
 		
-		
-		
+
 		try {
 			new ConnectToServer();
 		} catch (ConnectException e) {

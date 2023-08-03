@@ -14,4 +14,8 @@
     <fullyQualifiedTypeName name="app.User"/>
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="java.net.ConnectException"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
+    <fullyQualifiedTypeName name="users.UserLogin"/>
+    <fullyQualifiedTypeName name="users.User"/>
 </qualifiedTypeNameHistroy>
