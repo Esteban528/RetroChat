@@ -27,10 +27,10 @@ public class User implements Serializable{
 
 	private String nick, email, ip;
 	
-	public User (String nick, String email, String ip) {
+	public User (String nick, String email) {
 		this.nick = nick;
 		this.email = email;
-		this.ip = ip;
+		//this.ip = ip;
 	}
 
 	public String getNick() {

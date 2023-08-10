@@ -177,7 +177,7 @@ class ContactsZone extends JPanel {
 					}
 					
 					if (nick != null && email != null) {
-						User user = new User (nick, email, "0.0.0");
+						User user = new User (nick, email);
 						contactsArray.add(user);
 						model.removeAllElements();
 						for (User s : contactsArray) {

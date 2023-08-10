@@ -5,7 +5,6 @@
     <fullyQualifiedTypeName name="java.util.Properties"/>
     <fullyQualifiedTypeName name="java.io.DataOutputStream"/>
     <fullyQualifiedTypeName name="java.nio.file.FileSystems"/>
-    <fullyQualifiedTypeName name="run.Start"/>
     <fullyQualifiedTypeName name="java.io.DataInputStream"/>
     <fullyQualifiedTypeName name="java.net.Socket"/>
     <fullyQualifiedTypeName name="java.net.ServerSocket"/>
@@ -18,4 +17,7 @@
     <fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
     <fullyQualifiedTypeName name="users.UserLogin"/>
     <fullyQualifiedTypeName name="users.User"/>
+    <fullyQualifiedTypeName name="app.UserLogin"/>
+    <fullyQualifiedTypeName name="run.Start"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>

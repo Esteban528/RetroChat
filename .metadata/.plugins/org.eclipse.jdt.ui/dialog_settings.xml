@@ -42,7 +42,7 @@
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="C:\Users\Esteban\Dev Folder\Projects\Java\RetroChat"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="2"/>
-		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="Start (1) - RetroChat API Server"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="run (1) - RetroChat API Server"/>
 		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="C:\Users\Esteban\Documents\retroChatAPI.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
 			<item value="C:\Users\Esteban\Documents\retroChatAPI.jar"/>
@@ -72,7 +72,7 @@
 		<item key="DIALOG_X_ORIGIN" value="633"/>
 		<item key="DIALOG_Y_ORIGIN" value="40"/>
 		<item key="DIALOG_WIDTH" value="670"/>
-		<item key="DIALOG_HEIGHT" value="727"/>
-		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono NL SemiBold|9.0|0|WINDOWS|1|-12|0|0|0|600|0|0|0|0|3|2|1|49|JetBrains Mono NL SemiBold"/>
+		<item key="DIALOG_HEIGHT" value="660"/>
+		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|0|3|2|1|49|JetBrains Mono"/>
 	</section>
 </section>

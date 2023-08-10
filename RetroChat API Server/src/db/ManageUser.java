@@ -2,8 +2,8 @@ package db;
 
 import java.sql.*;
 
-import users.User;
-import users.UserLogin;
+import app.User;
+import app.UserLogin;
 
 public class ManageUser {
 	DatabaseConnection db; 
@@ -72,7 +72,7 @@ public class ManageUser {
 		rs.next();
 		nick = rs.getString("name");
 		
-		User user = new User(nick, email, "0");
+		User user = new User(nick, email);
 		
 		rs.close();
 		connection.close();
@@ -104,7 +104,7 @@ public class ManageUser {
 	public boolean setPasswordFromEmail (String email, String password) throws SQLException {
 		Boolean accert = false;
 		
-		if (isUser(new User("temp", email, ""))) {
+		if (isUser(new User("temp", email))) {
 			String sql = "UPDATE user SET password=? WHERE=?";
 			
 			Connection connection = db.getConnection();

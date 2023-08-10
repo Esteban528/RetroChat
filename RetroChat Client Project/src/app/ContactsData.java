@@ -36,7 +36,7 @@ public class ContactsData implements Serializable {
 		}else {
 			System.out.println("El file no existe");
 			this.contactsArray = new ArrayList<User>();
-			contactsArray.add(new User("Esteban", "estebangonza2005@gmail.com", "10.0.0.12"));
+			contactsArray.add(new User("Esteban", "estebangonza2005@gmail.com"));
 			setContactsFile (contactsArray);
 		}
 		
