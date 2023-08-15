@@ -5,8 +5,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import app.User;
-import app.UserLogin;
+import users.*;
 
 public class OutputData implements Runnable {
 		private Socket socketOutput;
@@ -71,6 +70,13 @@ public class OutputData implements Runnable {
 			send ();
 			
 			objectOutput.writeObject(userL);
+			this.objectOutput.flush();
+		}
+		
+		public void send(SendObject sendObject) throws IOException {
+			send ();
+			
+			objectOutput.writeObject(sendObject);
 			this.objectOutput.flush();
 		}
 		

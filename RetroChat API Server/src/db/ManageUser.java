@@ -1,14 +1,16 @@
 package db;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 
-import app.User;
-import app.UserLogin;
+import users.User;
+import users.UserLogin;
 
 public class ManageUser {
 	DatabaseConnection db; 
 	
-	public ManageUser () {
+	public ManageUser () throws SQLException, FileNotFoundException, IOException {
 		db = new DatabaseConnection();
 	}
 	
@@ -18,7 +20,7 @@ public class ManageUser {
 		String sql = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
 		PreparedStatement pStatement = connection.prepareStatement(sql);
 		
-		pStatement.setString(1, userL.getName());
+		pStatement.setString(1, userL.getNick());
 		pStatement.setString(2, userL.getEmail());
 		pStatement.setString(3, userL.getPassword());
 		

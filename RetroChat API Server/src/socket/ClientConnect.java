@@ -7,9 +7,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import app.User;
-import app.UserLogin;
+import app.*;
 import run.Run;
+import users.SendObject;
+import users.User;
+import users.UserLogin;
 
 public class ClientConnect implements Runnable{
 	//Socket socketOutput;
@@ -56,6 +58,7 @@ public class ClientConnect implements Runnable{
 	
 	public void send(User user, Object send) {
 		Socket clientSocket;
+		System.out.println(user.getIp());
 		try {
 			clientSocket = new Socket(user.getIp(), 9291);
 			ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -86,7 +89,23 @@ public class ClientConnect implements Runnable{
 				objectInput = new ObjectInputStream(socket.getInputStream());
 				Object receivedObject = objectInput.readObject();
 				String ip = socket.getInetAddress().getHostAddress();
-			    if (receivedObject instanceof User) {
+			    if (receivedObject instanceof UserLogin) {
+					UserLogin userL = (UserLogin) receivedObject;
+					userL.setIp(ip);
+					Run.userData.action(userL);
+				}
+			    else if (receivedObject instanceof SendObject) {
+			    	SendObject received = (SendObject) receivedObject;
+			    	switch (received.getAction()) {
+			    	case "email-verificate":
+			    		UserLogin userL = received.getUserL();
+			    		userL.setIp(ip);
+			    		if(userL.getAction().equals("createUser")) {
+			    			System.out.println("Se puede crear un usuario");
+			    		}
+			    	}
+			    }
+			    else if (receivedObject instanceof User) {
 			        User user = (User) receivedObject;
 					user.setIp(ip);
 					System.out.println(user.getNick()+" connected from "+user.getIp());
@@ -94,6 +113,7 @@ public class ClientConnect implements Runnable{
 					//Output
 					send(user, new String("Usuario conectado " + user));
 				}
+			  
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -12,8 +12,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Properties;
 
-import app.User;
-import app.UserLogin;
+import users.*;
 
 public class ServerConnect{
 	public OutputData outputData;

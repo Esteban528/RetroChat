@@ -6,6 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Esteban/Dev Folder/Projects/Java/RetroChat/userLibrary/users.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -23,8 +23,21 @@ public class ReadConfigData {
 			if (!configFile.exists()) {
 				Properties properties = new Properties();
 				properties.setProperty("port", "9090");
-				properties.setProperty("email", "<email>");
-				properties.setProperty("password", "<password>");
+				
+				properties.setProperty("emailUrl", "<email>");
+				properties.setProperty("emailPassword", "<password>");
+				
+				properties.setProperty("emailHost", "smtp.gmail.com");
+				properties.setProperty("emailAuth", "true");
+				properties.setProperty("emailPort", "587");
+				properties.setProperty("emailStarttls", "true");
+				
+				
+				
+				properties.setProperty("dbUser", "<dbUser>");
+				properties.setProperty("dbPassword", "<dbPassword>");
+				
+				
 				properties.store(new FileWriter(ROUTE_OF_NETWORKCONFIG), null);
 			}
 		} catch (Exception e) {

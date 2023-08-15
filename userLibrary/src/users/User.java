@@ -1,30 +1,12 @@
-package app;
+package users;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 public class User implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	@Override
-	public int hashCode() {
-		return Objects.hash(email, ip, nick);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(ip, other.ip) && Objects.equals(nick, other.nick);
-	}
-
+	
 	private String nick, email, ip;
 	
 	public User (String nick, String email) {
@@ -61,5 +43,23 @@ public class User implements Serializable{
 	public String toString() {
 		return this.nick;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, ip, nick);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(ip, other.ip) && Objects.equals(nick, other.nick);
+	}
+
 	
 }

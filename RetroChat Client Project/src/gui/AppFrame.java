@@ -11,7 +11,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicBorders;
 
 
-import app.User;
+import users.*;
 import run.Start;
 
 public class AppFrame extends JFrame implements WindowListener  {

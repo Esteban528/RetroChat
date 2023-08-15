@@ -18,8 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import app.ManageLoginData;
-import app.User;
-import app.UserLogin;
+import users.*;
 import run.Start;
 import socket.ObjectReceivedListenner;
 import socket.ServerConnect;
@@ -31,10 +30,11 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 	    private JPasswordField passwordConfirmField;
 	    private JButton confirmButton;
 	    private JButton createUserButton;
+	    private ServerConnect server;
 
 	    public RegisterUserPanel() {
 	    	// trigger event when a packet arrives from the server
-	    	ServerConnect server = Start.api;
+	    	server = Start.api;
 	    	server.getReceivedObjectListenner().addEventListenner(this);
 	    	
 	        // Set layout for the panel
@@ -151,14 +151,14 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 		                	System.out.println(password);
 		                	UserLogin userL = new UserLogin(username, email, password);
 		                	userL.setAction("createUser");
-		                	server.outputData.send(userL);
+		                	server.outputData.send(new User(username, email));
 		                	
 		                	//server.outputData.send(new User(username, email));
 		                	
 							System.out.println("Enviado");
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
-							System.out.println("Error raro: "+ e1.getMessage());
+							System.out.println("Error al conectarse con el servidor: "+ e1.getMessage());
 							
 						}
 	            	}
@@ -168,9 +168,31 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 
 		@Override
 		public void actionPerformed(Object receivedObject) {
+			System.out.println("Llegó algo");
 			// TODO Auto-generated method stub
-			System.out.println("Llegó algo!!!!");
+			if (receivedObject instanceof SendObject) {
+				SendObject receive = (SendObject) receivedObject;
+				
+				UserLogin userL = receive.getUserL();
+				switch(receive.getAction()) {
+				
+				case "verification-code":
+					String code = JOptionPane.showInputDialog("Enviamos un código de verificación a tu correo");
+					
+					if (Integer.parseInt(code) == userL.getId()) {
+						JOptionPane.showMessageDialog(RegisterUserPanel.this, "Correo verificado con éxito", "information",JOptionPane.INFORMATION_MESSAGE);
+						SendObject sendObject = new SendObject(userL, "email-verificate");
+						
+						try {
+							server.outputData.send(sendObject);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							System.out.println("Error al procesar: "+e.getMessage());
+						}
+					}
+					
+					break;
+				}
+			}
 		}
-
-
 }

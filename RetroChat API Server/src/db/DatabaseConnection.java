@@ -1,25 +1,25 @@
 package db;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
+
+import run.Run;
 
 public class DatabaseConnection {
 	private Connection connection;
 	private Statement statement;
 	
-	public DatabaseConnection () {
-		try {
-			setConnection(connectToDB());
-			setStatement(connection.createStatement());
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Conexión a la base de datos rechazada");
-		}
+	public DatabaseConnection () throws SQLException, FileNotFoundException, IOException {
+		setConnection(connectToDB());
+		setStatement(connection.createStatement());
 	}
 			
-	private Connection connectToDB () throws SQLException {
+	private Connection connectToDB () throws SQLException, FileNotFoundException, IOException {
+		String user = Run.configData.getProperty("dbUser");
+		String password = Run.configData.getProperty("dbPassword");
 		String url = "jdbc:mysql://127.0.1.1:3306/javaTest?useSSL=false";
-		Connection connection = DriverManager.getConnection(url, "root", "password");
+		Connection connection = DriverManager.getConnection(url, user, password);
 			
 		return connection;
 	}

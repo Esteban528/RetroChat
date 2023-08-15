@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 
-import app.User;
+import users.*;
 import run.Start;
 
 public class LoginFrame extends JFrame  {

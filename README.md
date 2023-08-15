@@ -9,5 +9,8 @@ Este proyecto trata sobre una aplicación de chat con una interfaz retro en swin
 
 ## Server
 - Java JDK 1.8.
-- Java mysql JDBC driver.
 - MySQL server.
+
+###Libraries required
+- Java mysql JDBC driver [https://dev.mysql.com/downloads/connector/j/].
+- Javax Mail [https://github.com/javaee/javamail/releases].
