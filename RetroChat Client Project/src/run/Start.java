@@ -25,13 +25,15 @@ public class Start {
 			ROUTE_PERSONAL_DATA = "C:\\RetroChat";
 			
 		}else {
-			ROUTE_PERSONAL_DATA = "~/RetroChat";
+			ROUTE_PERSONAL_DATA = "/home/"+System.getProperty("user.name")+"/RetroChat";
 		}
 		
 		File folder = new File(ROUTE_PERSONAL_DATA+s+CONFIG_DIR);
 		if (!folder.isDirectory()) {
 			folder.mkdirs();
+			
 		}
+		System.out.println("Carpeta de configuración leida en: "+ folder.getAbsolutePath());
 		
 		try {
 			api = new ServerConnect();
