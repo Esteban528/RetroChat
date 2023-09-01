@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
-    <fullyQualifiedTypeName name="java.util.Properties"/>
     <fullyQualifiedTypeName name="java.io.DataOutputStream"/>
     <fullyQualifiedTypeName name="java.nio.file.FileSystems"/>
     <fullyQualifiedTypeName name="java.io.DataInputStream"/>
@@ -14,7 +13,6 @@
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="java.net.ConnectException"/>
     <fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
-    <fullyQualifiedTypeName name="users.User"/>
     <fullyQualifiedTypeName name="run.Start"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="app.UserLogin"/>
@@ -24,15 +22,25 @@
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.TimerTask"/>
     <fullyQualifiedTypeName name="java.util.Timer"/>
-    <fullyQualifiedTypeName name="email.EmailManager"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="app.UsersManager"/>
     <fullyQualifiedTypeName name="db.DatabaseConnection"/>
     <fullyQualifiedTypeName name="email.EmailSendListenner"/>
-    <fullyQualifiedTypeName name="run.Run"/>
-    <fullyQualifiedTypeName name="users.UserLogin"/>
-    <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="javax.mail.SendFailedException"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="email.run.Start"/>
+    <fullyQualifiedTypeName name="email.socket.ClientConnect"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
     <fullyQualifiedTypeName name="users.SendObject"/>
+    <fullyQualifiedTypeName name="users.UserLogin"/>
+    <fullyQualifiedTypeName name="email.EmailManager"/>
+    <fullyQualifiedTypeName name="users.User"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="app.UserConnected"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="run.Run"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="db.UserDBDriver"/>
 </qualifiedTypeNameHistroy>

@@ -66,7 +66,7 @@ public class AppFrame extends JFrame implements WindowListener  {
 	@Override
 	public void windowClosed(WindowEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.exit(0);
 	}
 
 	@Override

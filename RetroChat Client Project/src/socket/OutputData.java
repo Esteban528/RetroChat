@@ -70,6 +70,7 @@ public class OutputData implements Runnable {
 			send ();
 			
 			objectOutput.writeObject(userL);
+			System.out.println(userL);
 			this.objectOutput.flush();
 		}
 		

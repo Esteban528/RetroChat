@@ -6,8 +6,7 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import app.ReadConfigData;
-import run.Run;
+import email.run.*;
 
 public class EmailManager {
 	private Session session;
@@ -15,7 +14,7 @@ public class EmailManager {
 	public GenerateEvent emailEvent;
 	
 	public EmailManager () throws FileNotFoundException, IOException {
-		ReadConfigData properties = Run.configData;
+		ReadConfigData properties = Start.configData;
 		username = properties.getProperty("emailUrl");
         final String password = properties.getProperty("emailPassword");
         final String auth = properties.getProperty("emailAuth");

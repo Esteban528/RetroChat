@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.net.InetAddress;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -151,7 +153,7 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 		                	System.out.println(password);
 		                	UserLogin userL = new UserLogin(username, email, password);
 		                	userL.setAction("createUser");
-		                	server.outputData.send(new User(username, email));
+		                	server.outputData.send(userL);
 		                	
 		                	//server.outputData.send(new User(username, email));
 		                	
@@ -168,31 +170,59 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 
 		@Override
 		public void actionPerformed(Object receivedObject) {
-			System.out.println("Llegó algo");
+			System.out.println("Llegó algo:"+receivedObject.getClass());
 			// TODO Auto-generated method stub
-			if (receivedObject instanceof SendObject) {
-				SendObject receive = (SendObject) receivedObject;
+			if (receivedObject instanceof UserLogin) {
+				UserLogin userL = (UserLogin) receivedObject;
 				
-				UserLogin userL = receive.getUserL();
-				switch(receive.getAction()) {
+
+				switch(userL.getAction()) {
 				
 				case "verification-code":
-					String code = JOptionPane.showInputDialog("Enviamos un código de verificación a tu correo");
 					
-					if (Integer.parseInt(code) == userL.getId()) {
-						JOptionPane.showMessageDialog(RegisterUserPanel.this, "Correo verificado con éxito", "information",JOptionPane.INFORMATION_MESSAGE);
-						SendObject sendObject = new SendObject(userL, "email-verificate");
-						
+					boolean accert = false;
+					int intCode = 0;
+					
+					while (!accert) {
+						String inputCode = JOptionPane.showInputDialog("Enviamos un código de verificación a tu correo");
+						if (inputCode == null || inputCode.equals("")) {
+							JOptionPane.showMessageDialog(RegisterUserPanel.this, "Cancelaste la operacion.", "Error", JOptionPane.ERROR_MESSAGE);								
+
+							break;
+						}
 						try {
-							server.outputData.send(sendObject);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							System.out.println("Error al procesar: "+e.getMessage());
+							intCode = Integer.parseInt(inputCode);
+							
+							if (intCode == userL.getId()) {
+								JOptionPane.showMessageDialog(RegisterUserPanel.this, "Correo verificado con éxito. Ya puedes acceder a tu cuenta.", "information",JOptionPane.INFORMATION_MESSAGE);
+								userL.setAction("email-verificated");
+								accert = true;
+								
+								server.getReceivedObjectListenner().removeEventListenner(this);
+								windowFather.dispose();
+								
+								try {
+									server.outputData.send(userL);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									System.out.println("Error al procesar: "+e.getMessage());
+								}
+								
+								break;
+							} else
+								JOptionPane.showMessageDialog(RegisterUserPanel.this, "Código incorrecto.", "Error", JOptionPane.ERROR_MESSAGE);								
+						}catch (NumberFormatException e) {
+							JOptionPane.showMessageDialog(RegisterUserPanel.this, "Dato inválido, debe ingresar un número", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 					}
+				
+					break;
+				case "email-occuped":
+					JOptionPane.showMessageDialog(RegisterUserPanel.this, "Este correo electrónico está ocupado.", "Error", JOptionPane.ERROR_MESSAGE);								
 					
 					break;
 				}
+				
 			}
 		}
 }

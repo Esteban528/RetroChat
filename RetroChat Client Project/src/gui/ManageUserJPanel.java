@@ -8,7 +8,7 @@ public class ManageUserJPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JFrame windowFather;
+	protected JFrame windowFather;
 	
     public JFrame getWindowFather() {
 		return windowFather;

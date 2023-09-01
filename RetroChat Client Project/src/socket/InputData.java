@@ -20,7 +20,7 @@ class InputData implements Runnable{
 		// TODO Auto-generated method stub
 		
 		try {
-			ServerSocket clientSocket = new ServerSocket(9291);
+			ServerSocket clientSocket = new ServerSocket(9191);
 			while(true) {
 				Thread thread = new Thread(new InputHandler(clientSocket.accept()));
 				thread.start(); 
@@ -46,7 +46,14 @@ class InputData implements Runnable{
 			try {
 				ObjectInputStream objectInput = new ObjectInputStream(socket.getInputStream());
 				
-				serverConnect.getReceivedObjectListenner().executeEvent(objectInput);
+				Object objectReceived;
+				try {
+					objectReceived = (Object) objectInput.readObject();
+					serverConnect.getReceivedObjectListenner().executeEvent(objectReceived);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Input objects error: "+e.getMessage());
+				}		
 				
 				objectInput.close();
 				socket.close();

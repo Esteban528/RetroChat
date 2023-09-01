@@ -1,38 +1,32 @@
 package run;
 
-import socket.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import app.*;
+import app.ReadConfigData;
+import app.UsersManager;
 import db.DatabaseConnection;
-import email.EmailManager;
+import email.EmailConnect;
+import socket.ClientConnect;
 
 public class Run {
 	public static ReadConfigData configData;
-	public static EmailManager email;
+	public static EmailConnect email;
 	public static ClientConnect connection;
 	public static UsersManager userData;
 	public static DatabaseConnection database;
-	
-	
+
+
 	public static void main(String[] args) {
-		Boolean error = false;
+		boolean error = false;
 		// TODO Auto-generated method stub
-		configData = new ReadConfigData(); 
+		configData = new ReadConfigData();
 		userData = new UsersManager();
-		
+
+		email = new EmailConnect(configData.getPropertyFile());
+
 		try {
-			email = new EmailManager();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Email service error: "+ e.getMessage());
-			error = true;
-		}
-		
-		/*try {
 			database = new DatabaseConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -46,11 +40,13 @@ public class Run {
 			// TODO Auto-generated catch block
 			System.out.println("DB Error IOException: " + e.getMessage());
 			error = true;
-		}*/
+		}
 		
+		System.out.println(database == null ? "Error" : "Funciona bien");
+
 		if(!error)
 			connection = new ClientConnect();
-		
+
 	}
 
 }

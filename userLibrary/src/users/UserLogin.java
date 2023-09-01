@@ -1,10 +1,32 @@
 package users;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @SuppressWarnings("serial")
 public class UserLogin extends User implements Serializable {
-	private String password, action;
+	private String password, action="";
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(action, id, logged, password);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserLogin other = (UserLogin) obj;
+		return Objects.equals(action, other.action) && id == other.id && logged == other.logged
+				&& Objects.equals(password, other.password);
+	}
+
 	private boolean logged;
 	private int id;
 	

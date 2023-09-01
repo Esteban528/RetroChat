@@ -1,26 +1,34 @@
 package app;
 
+
 import email.EmailSendListenner;
 import run.Run;
-import users.*;
+import users.UserLogin;
 
-public class UserConnected extends UserLogin implements EmailSendListenner  {
+public class UserConnected implements EmailSendListenner {
+	UserLogin userL;
+	
+	public UserConnected(String nick, String email, String password, String ip) {	
+		userL = new UserLogin(nick, email, password);
+		userL.setIp(ip);
+	}
 
-	public UserConnected(String nick, String email, String password, String ip) {
-		super(nick, email, password);
-		this.setIp(ip);
-		
+	public UserConnected(UserLogin userL) {
+		this.userL = userL;
 	}
-	
-	public UserConnected(UserLogin user, int id) {
-		super(user.getNick(), user.getEmail(), user.getPassword());
-		this.setIp(user.getIp());
-		this.setId(id);
-	}
-	
+
 	@Override
 	public void actionPerformed(String email) {
 		
+		System.out.println("Callback > "+email+": "+userL.getId()+" IP? "+userL.getIp());
 	}
-		
+
+	public UserLogin getUserL() {
+		return userL;
+	}
+
+	public void setUserL(UserLogin userL) {
+		this.userL = userL;
+	}
+
 }

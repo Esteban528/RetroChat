@@ -3,9 +3,26 @@ package users;
 import java.io.Serializable;
 
 public class SendObject implements Serializable{
+	public String[] getStrings() {
+		return strings;
+	}
+
+	public void setStrings(String[] strings) {
+		this.strings = strings;
+	}
+
+	public boolean isBool() {
+		return bool;
+	}
+
+	public void setBool(boolean bool) {
+		this.bool = bool;
+	}
+
 	private UserLogin userL;
 	
-	private String action, text;
+	private String [] strings;
+	private String action="", text;
 	private boolean bool;
 	
 	private int code;
