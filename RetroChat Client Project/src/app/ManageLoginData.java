@@ -51,7 +51,7 @@ public class ManageLoginData {
     public void logout() {
     	UserLogin userL;
     	try {
-    		userL = Start.userLogin;
+    		userL = AppData.i().getUserL();;
     		userL.setAction("logout");  
 			Start.api.outputData.send(userL);
 		} catch (IOException e) {

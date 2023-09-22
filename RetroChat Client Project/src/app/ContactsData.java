@@ -7,8 +7,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+
 
 import gui.LoginPanel;
 import users.*;
@@ -53,7 +57,7 @@ public class ContactsData implements Serializable {
 		setContactsFile (contactsArray);
 	}
 	
-	public ArrayList<User> getContactsFile () {
+	public ArrayList<User> getContactsList () {
 		return contactsArray;
 	}
 	
@@ -70,6 +74,29 @@ public class ContactsData implements Serializable {
 			JOptionPane.showMessageDialog(null, "Error al guardar contacto "+ e.getMessage() + " Path" +ROUTE_OF_CONTACTSLIST, "error", JOptionPane.ERROR_MESSAGE);
 
 		}
+	}
+	
+	public boolean isEmailContact (String email) {
 		
+		Iterator<User> iterator = contactsArray.iterator();
+		while (iterator.hasNext()) {
+		    User contact = iterator.next();
+		    if (contact.getEmail().equals(email))
+		    	return true;
+		}
+		
+		
+		return false;
+	}
+	
+	public void addContact(DefaultListModel<User> model, JList<User> contactsList, User user) {
+		contactsArray.add(user);
+		model.removeAllElements();
+		for (User s : contactsArray) {
+			model.addElement(s);
+			System.out.println(s);
+		}
+		contactsList.setModel(model);
+		new ContactsData(contactsArray);
 	}
 }

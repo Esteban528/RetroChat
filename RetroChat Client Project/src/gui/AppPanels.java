@@ -30,21 +30,22 @@ import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.text.DefaultStyledDocument;
 
+import app.AppData;
 import app.ContactsData;
 import run.Start;
 import users.User;
 
 public class AppPanels extends CustomJPanel {
-	private JPanel contactZone;
+	private static ContactsZone contactZone;
 	private ChatZone chatZone;
 	private JSplitPane splitPane;
 	
-	public JPanel getContactZone() {
+	public static ContactPanel getContactZone() {
 		return contactZone;
 	}
 
-	public void setContactZone(JPanel contactZone) {
-		this.contactZone = contactZone;
+	public void setContactZone(ContactsZone contactZone) {
+		AppPanels.contactZone = contactZone;
 	}
 
 	public ChatZone getChatZone() {
@@ -91,11 +92,32 @@ class MenuBar extends CustomMenuBar {
 }
 
 // Contacts area
-class ContactsZone extends CustomJPanel {
+class ContactsZone extends CustomJPanel implements ContactPanel{
 	public static ArrayList<User> contactsArray;
 	private User contactSelected;
 	private CustomJList<User> contactsList;
-	DefaultListModel<User> model = new DefaultListModel<>();
+	private DefaultListModel<User> model = new DefaultListModel<>();
+	
+	public void addContact(User user) {
+		Start.updateContactsList.addContact(model, contactsList, user);
+	}
+	
+	public CustomJList<User> getContactsList() {
+		return contactsList;
+	}
+
+	public void setContactsList(CustomJList<User> contactsList) {
+		this.contactsList = contactsList;
+	}
+
+	public DefaultListModel<User> getModel() {
+		return model;
+	}
+
+	public void setModel(DefaultListModel<User> model) {
+		this.model = model;
+	}
+
 	private AppPanels father;
 
 	public User getContactSelected() {
@@ -104,10 +126,11 @@ class ContactsZone extends CustomJPanel {
 
 	public void setContactSelected(User contactSelected) {
 		this.contactSelected = contactSelected;
+		AppData.i().setTemporalUserSelected(contactSelected);
 	}
 	
 	public ContactsZone(AppPanels father) {
-		contactsArray = Start.updateContactsList.getContactsFile();
+		contactsArray = Start.updateContactsList.getContactsList();
 		this.father=father;
 		setLayout(new BorderLayout());
 
@@ -147,7 +170,6 @@ class ContactsZone extends CustomJPanel {
 		addContactOption.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				String nick, email;
 				nick = JOptionPane.showInputDialog("Nombre del contacto:");
 				while (nick != null && nick.length() < 5) {
@@ -157,19 +179,12 @@ class ContactsZone extends CustomJPanel {
 				if (nick != null) {
 					email = JOptionPane.showInputDialog("Escriba el email");
 					while (!app.ManageLoginData.isRealEmail(email)) {
-						email = JOptionPane.showInputDialog("Escriba una direccion correcta");
+						email = JOptionPane.showInputDialog("Escriba una dirección correcta");
 					}
 
 					if (nick != null && email != null) {
 						User user = new User(nick, email);
-						contactsArray.add(user);
-						model.removeAllElements();
-						for (User s : contactsArray) {
-							model.addElement(s);
-							System.out.println(s);
-						}
-						contactsList.setModel(model);
-						new ContactsData(contactsArray);
+						addContact(user);
 					}
 				}
 			}
@@ -188,8 +203,7 @@ class ContactsZone extends CustomJPanel {
 				User user = (User) contactsList.getSelectedValue();
 				if (user != null) {
 					setContactSelected(user);
-					System.out.println("Click en contacto: " + user.getEmail());
-					Start.driverMessages.updateTextArea(father.getChatZone().getChatArea(), user);	
+					Start.driverMessages.updateTextArea(father.getChatZone().getChatArea());	
 					this.father.getChatZone().setTextContactText(user.getNick()+ ": " + user.getEmail());
 				}
 			}
@@ -252,9 +266,8 @@ class ChatZone extends CustomJPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String message = getMessageField().getText();
-				User user = ((ContactsZone) ChatZone.this.father.getContactZone()).getContactSelected();
 				if (message.length() > 1)
-					Start.driverMessages.sendMessage(message, user);
+					Start.driverMessages.sendMessage(message);
 				else 
 					JOptionPane.showMessageDialog(ChatZone.this, "Mensaje demasiado corto", "error", JOptionPane.ERROR_MESSAGE);
 			}

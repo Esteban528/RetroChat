@@ -20,7 +20,6 @@ public class Start {
 	public static ServerConnect api;
 	public static ContactsData updateContactsList;
 	public static GUIFactory guiFactory;
-	public static UserLogin userLogin;
 	public static DriverMessage driverMessages;
 	public static ManageLoginData lg;
 

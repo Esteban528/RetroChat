@@ -20,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import app.AppData;
 import app.ManageLoginData;
 import run.Start;
 import socket.ObjectReceivedListenner;
@@ -142,7 +143,7 @@ public class LoginPanel extends ManageUserJPanel {
 			switch (userL.getAction()){
 			case "user-logged":
 				windowFather.dispose();
-				Start.userLogin = userL;
+				AppData.i().setUserL(userL);
 				Start.api.getReceivedObjectListenner().removeEventListenner(this);
 				Start.guiFactory.createWindow(GUIFactory.APP);
 				break;

@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.text.DefaultStyledDocument;
 
+import gui.AppPanels;
 import gui.CustomDocument;
 import gui.LoginPanel;
 import run.Start;
@@ -24,9 +25,10 @@ public class DriverMessage implements ObjectReceivedListenner{
 	}
 	
 	
-	public void updateTextArea(CustomDocument area, User user) {
+	public void updateTextArea(CustomDocument area) {
+		User user = AppData.i().getTemporalUserSelected();
 		SendObject sendObj = new SendObject(user);
-		sendObj.setUserL(Start.userLogin);
+		sendObj.setUserL(AppData.i().getUserL());
 		sendObj.setAction("get-messages");
 		this.textArea = area;
 		try {
@@ -37,9 +39,11 @@ public class DriverMessage implements ObjectReceivedListenner{
 		}
 	}
 	
-	public void sendMessage(String message, User user) {
+	public void sendMessage(String message) {
+		User user = AppData.i().getTemporalUserSelected();
+		
 		SendObject sendObj = new SendObject(user);
-		sendObj.setUserL(Start.userLogin);
+		sendObj.setUserL(AppData.i().getUserL());
 		sendObj.setText(message);
 		sendObj.setAction("add-message");
 		try {
@@ -75,16 +79,27 @@ public class DriverMessage implements ObjectReceivedListenner{
 		}
 	}
 	
-	public void addMessage(SendObject sObj) {
+	public boolean addMessage(SendObject sObj) {
+		
 		String nick;
 		Boolean you = false;
-		if (sObj.getUserSender().getEmail().equals(Start.userLogin.getEmail())) {
+		if (sObj.getUserSender().getEmail().equals(AppData.i().getUserL().getEmail())) {
 			nick = "Tú";
 			you = true;
 		}else
 			nick = sObj.getUserSender().getNick();
 		
+		if(!you && !sObj.getUserSender().getEmail().equals(AppData.i().getTemporalUserSelected().getEmail())) {
+			if (!Start.updateContactsList.isEmailContact (sObj.getUserSender().getEmail())) {
+				sObj.getUserSender().setNick(nick+" !");
+				AppPanels.getContactZone().addContact(sObj.getUserSender());
+			}
+			
+			return false;
+		}
+		
 		textArea.append(nick, sObj.getText(), sObj.getTime(), you);
 		
+		return true;
 	}
 }
