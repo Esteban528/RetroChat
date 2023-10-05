@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    image: RetrochatServer:1
+    volumes:
+      - ./server:/app/RetroChat 
+    ports:
+      - 80:80
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysqlVolume:/var/lib/mysql
+      - ./DB files/retrochat_crud.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: users
+      MYSQL_USER: admin 
+      MYSQL_PASSWORD: admin 
+      MYSQL_ROOT_PASSWORD: este5ban9
+    ports:
+      - 3306:3306
+volumes:
+  mysqlVolume:
