@@ -1,0 +1,9 @@
+INDEX VERSION 1.134+/home/esteban/Dev/Projects/Java/RetroChat/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+1034605913.index
+2292936340.index
+1377260264.index
+3190866726.index
+356382798.index
+1552821336.index
+3181814058.index

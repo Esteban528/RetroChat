@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContextState>
+<org.eclipse.mylyn.context.ui.editors>
+<MonitoredWindowOpenEditors class="org.eclipse.ui.internal.WorkbenchWindow" isActive="true" isLaunching="true" number="0">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Start.java" partName="Start.java" title="Start.java" tooltip="RetroChat API Server/src/run/Start.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat API Server/src/run/Start.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="194" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseConnection.java" partName="DatabaseConnection.java" title="DatabaseConnection.java" tooltip="RetroChat API Server/src/db/DatabaseConnection.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat API Server/src/db/DatabaseConnection.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="134" selectionTopPixel="88"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ManageUser.java" partName="ManageUser.java" title="ManageUser.java" tooltip="RetroChat API Server/src/db/ManageUser.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat API Server/src/db/ManageUser.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2497" selectionTopPixel="1474"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" partName="User.java" title="User.java" tooltip="RetroChat API Server/src/users/User.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat API Server/src/users/User.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="106" selectionTopPixel="252"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserLogin.java" partName="UserLogin.java" title="UserLogin.java" tooltip="RetroChat API Server/src/users/UserLogin.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat API Server/src/users/UserLogin.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="228" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Start.java" partName="Start.java" title="Start.java" tooltip="RetroChat Client Project/src/run/Start.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RetroChat Client Project/src/run/Start.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1085" selectionTopPixel="0"/>
+</editor>
+</MonitoredWindowOpenEditors>
+</org.eclipse.mylyn.context.ui.editors>
+</ContextState>

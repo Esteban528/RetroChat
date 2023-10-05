@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;ChatDriver.java&apos; to &apos;RetroChat API Server/src/db&apos;&#x0D;&#x0A;- Original project: &apos;RetroChat API Server&apos;&#x0D;&#x0A;- Destination element: &apos;RetroChat API Server/src/db&apos;&#x0D;&#x0A;- Original element: &apos;chat.ChatDriver.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;db" element1="/src&lt;chat{ChatDriver.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1694296507023" units="1" version="1.0"/>
+</session>
