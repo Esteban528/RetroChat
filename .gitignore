@@ -1,10 +1,5 @@
-/.metadata/
-*.metadata
+EmailService/
+"RetroChat API Server"/
+"RetroChat Cliente Project"/
+userLibrary/
 
-##############################
-## Java
-##############################
-.mtj.tmp/
-*.class
-
-hs_err_pid
