@@ -11,21 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.*;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.text.DefaultStyledDocument;
@@ -266,8 +252,17 @@ class ChatZone extends CustomJPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String message = getMessageField().getText();
-				if (message.length() > 1)
-					Start.driverMessages.sendMessage(message);
+					if (message.length() > 1) {
+						Start.driverMessages.sendMessage(message);
+					sendButton.setEnabled(false);
+	                
+	                int visibleTime = 2000;
+	    			Timer timer = new Timer(visibleTime, ed -> {
+	    				sendButton.setEnabled(true);
+	    			});
+	    			timer.setRepeats(false);
+	    			timer.start();
+				}
 				else 
 					JOptionPane.showMessageDialog(ChatZone.this, "Mensaje demasiado corto", "error", JOptionPane.ERROR_MESSAGE);
 			}

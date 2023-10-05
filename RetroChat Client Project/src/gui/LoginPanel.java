@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import app.AppData;
 import app.ManageLoginData;
@@ -116,6 +117,14 @@ public class LoginPanel extends ManageUserJPanel {
 					}
                 }
                 
+                loginButton.setEnabled(false);
+                
+                int visibleTime = 5000;
+    			Timer timer = new Timer(visibleTime, ed -> {
+    				loginButton.setEnabled(true);
+    			});
+    			timer.setRepeats(false);
+    			timer.start();
             }
         });
 

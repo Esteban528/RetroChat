@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import app.ManageLoginData;
 import users.*;
@@ -125,6 +126,15 @@ public class RegisterUserPanel extends ManageUserJPanel implements ObjectReceive
 	                String email = emailField.getText();
 	                String password1 = new String(passwordField.getPassword());
 	                String password2 = new String(passwordConfirmField.getPassword());
+	                
+	                confirmButton.setEnabled(false);
+	                
+	                int visibleTime = 5000;
+	    			Timer timer = new Timer(visibleTime, ed -> {
+	    				confirmButton.setEnabled(true);
+	    			});
+	    			timer.setRepeats(false);
+	    			timer.start();
 	                
 	                if(username.length() < 5 || username.length() > 20) {
 	                	JOptionPane.showMessageDialog(RegisterUserPanel.this, "El nombre de usuario debe tener más de 5 y menos de 20 carácteres", "error", JOptionPane.ERROR_MESSAGE);

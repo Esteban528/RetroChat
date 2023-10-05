@@ -2,6 +2,7 @@ package gui;
 
 import app.ContactsData;
 import app.DriverMessage;
+import app.Notification;
 import run.Start;
 
 public class GUIFactory {
@@ -34,6 +35,7 @@ public class GUIFactory {
 				AppFrame guiPanel = new AppFrame();
 				guiPanel.open();
 				Start.driverMessages = new DriverMessage();
+				Notification.i().send("RetroChat", "Iniciaste sesión con éxito", false);
 				break;
 			default:
 				System.out.println("Error "+ nameFrame + " not found");

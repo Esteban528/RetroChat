@@ -68,38 +68,44 @@ public class DriverMessage implements ObjectReceivedListenner{
 			ArrayList<SendObject> messages = (ArrayList<SendObject>) receivedObject;
 			
 			messages.forEach(sObj -> {
-				addMessage(sObj);
+				addMessage(sObj, false);
 			});
 			
 			this.temporalMessages = messages;
+			textArea.updateText();
 			
 		}else if (receivedObject instanceof SendObject) {
 			SendObject sObj = (SendObject) receivedObject;
-			addMessage(sObj);
+			addMessage(sObj, true);
+			Notification.i().send("Nuevo mensaje", sObj.getUserL().getNick()+": "+sObj.getText(), true);		
 		}
 	}
 	
-	public boolean addMessage(SendObject sObj) {
+	public boolean addMessage(SendObject sObj, boolean onlyLoad) {
 		
 		String nick;
 		Boolean you = false;
 		if (sObj.getUserSender().getEmail().equals(AppData.i().getUserL().getEmail())) {
 			nick = "Tú";
 			you = true;
-		}else
+		}else {
 			nick = sObj.getUserSender().getNick();
+					
+		}
+		
+		
 		
 		if(!you && !sObj.getUserSender().getEmail().equals(AppData.i().getTemporalUserSelected().getEmail())) {
 			if (!Start.updateContactsList.isEmailContact (sObj.getUserSender().getEmail())) {
-				sObj.getUserSender().setNick(nick+" !");
+				sObj.getUserSender().setNick(nick);
 				AppPanels.getContactZone().addContact(sObj.getUserSender());
 			}
 			
 			return false;
 		}
 		
-		textArea.append(nick, sObj.getText(), sObj.getTime(), you);
 		
+		textArea.append(nick, sObj.getText(), sObj.getTime(), you, onlyLoad);
 		return true;
 	}
 }

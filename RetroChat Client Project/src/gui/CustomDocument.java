@@ -41,7 +41,7 @@ public class CustomDocument extends JTextPane{
 		}
 	*/
 
-	public void append(String subject, String text, String time, boolean you) {
+	public void append(String subject, String text, String time, boolean you, boolean whitLoad) {
 		String content;
 		if(you){
 			content = "<div class=\"right\">\n"
@@ -57,7 +57,9 @@ public class CustomDocument extends JTextPane{
 					+ "</div>";
 			} 
 		this.text += content;
-		updateText();
+		
+		if (whitLoad) 
+			updateText();
 	}
 	
 	public void updateText() {
