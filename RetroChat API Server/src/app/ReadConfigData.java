@@ -30,10 +30,10 @@ public class ReadConfigData {
 				
 				properties.setProperty("dbName", "retrochat_crud");
 				properties.setProperty("dbIP", "127.0.1.1");
-				properties.setProperty("dbPassword", "3306");
+				properties.setProperty("dbPort", "3306");
 				
-				properties.setProperty("dbUser", "<dbUser>");
-				properties.setProperty("dbPort", "<dbPassword>");
+				properties.setProperty("dbUser", "root");
+				properties.setProperty("dbPassword", "este5ban9");
 
 				properties.setProperty("ipEmailHost", "127.0.0.1");
 				properties.setProperty("portEmailHost", "9091");

@@ -4,7 +4,7 @@ services:
   web:
     image: RetrochatServer:1
     volumes:
-      - ./server:/app/RetroChat 
+      - ./server/RetroChatServer:/app/RetroChatServer
     ports:
       - 80:80
   db:
