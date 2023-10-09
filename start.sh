@@ -1,1 +1,1 @@
-docker build -t RetrochatServer:1 .
+docker build -t retrochatserver:1 .

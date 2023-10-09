@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: RetrochatServer:1
+    image: retrochatserver:1
     volumes:
       - ./server/RetroChatServer:/app/RetroChatServer
     ports:
