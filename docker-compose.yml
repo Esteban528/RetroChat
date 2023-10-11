@@ -1,12 +1,14 @@
 version: '3.8'
 
 services:
-  web:
+  server:
     image: retrochatserver:1
     volumes:
       - ./server/RetroChatServer:/app/RetroChatServer
     ports:
       - 80:80
+    networks:
+      - mynetwork
   db:
     image: mysql:5.7
     volumes:
@@ -17,7 +19,12 @@ services:
       MYSQL_USER: admin 
       MYSQL_PASSWORD: admin 
       MYSQL_ROOT_PASSWORD: este5ban9
+    networks:
+      - mynetwork
     ports:
       - 3306:3306
 volumes:
   mysqlVolume:
+
+networks:
+  mynetwork:
