@@ -25,6 +25,7 @@ public class Run {
 		// TODO Auto-generated method stub
 		configData = new ReadConfigData();
 		userData = new UsersManager();
+		System.out.println(configData.getPropertyFile().getProperty("dbIP"));
 
 		email = new EmailConnect(configData.getPropertyFile());
 		
