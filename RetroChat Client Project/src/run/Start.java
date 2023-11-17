@@ -45,7 +45,7 @@ public class Start {
 			// TODO Auto-generated catch block
 			System.out.println("El servidor rechazó la conexión");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace(); 
 		}
 		guiFactory = new GUIFactory();

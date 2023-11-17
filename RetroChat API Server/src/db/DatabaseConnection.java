@@ -18,7 +18,7 @@ public class DatabaseConnection {
 		if (enabled)
 			setStatement(connection.createStatement());
 		else
-			System.out.println("Error");
+			System.out.println("DB Error conection");
 	}
 
 	private boolean connectToDB () throws SQLException, FileNotFoundException, IOException {
@@ -28,6 +28,7 @@ public class DatabaseConnection {
 		String port = Run.configData.getProperty("dbPort");
 		String name = Run.configData.getProperty("dbName");
 		String url = "jdbc:mysql://"+ip+":"+port+"/"+name+"?allowPublicKeyRetrieval=true&useSSL=false";
+		
 		Connection connection = DriverManager.getConnection(url, user, password);
 		this.connection = connection;
 		return !connection.isClosed();

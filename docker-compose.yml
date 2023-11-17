@@ -1,18 +1,11 @@
 version: '3.8'
 
 services:
-  server:
-    image: retrochatserver:1
-    volumes:
-      - ./server/RetroChatServer:/app/RetroChatServer
-    ports:
-      - 80:80
-    networks:
-      - mynetwork
   db:
     image: mysql:5.7
     volumes:
-      - mysqlVolume:/var/lib/mysql
+      - retrochatdb:/var/lib/mysql
+
       - ./DB files/retrochat_crud.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_DATABASE: users
@@ -23,8 +16,19 @@ services:
       - mynetwork
     ports:
       - 3306:3306
+  server:
+    image: retrochatserver:1
+    volumes:
+      - ./server/RetroChatServer:/app/RetroChatServer
+      - ./server/Server.jar:/app/server/Server.jar
+    ports:
+      - 9090:9090 
+    networks:
+      - mynetwork
+
+        
 volumes:
-  mysqlVolume:
+  retrochatdb:
 
 networks:
   mynetwork:

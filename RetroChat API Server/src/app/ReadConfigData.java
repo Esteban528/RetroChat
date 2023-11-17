@@ -39,6 +39,7 @@ public class ReadConfigData {
 				properties.setProperty("portEmailHost", "9091");
 				properties.setProperty("userEmailHost", "admin");
 				properties.setProperty("passwordEmailHost", "admin");
+				
 
 
 				properties.store(new FileWriter(ROUTE_OF_NETWORKCONFIG), "Server configuration file");
